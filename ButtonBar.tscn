@@ -1,0 +1,30 @@
+[gd_scene format=2]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 535.0
+margin_right = 227.0
+margin_bottom = 578.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 4.0
+margin_right = 65.0
+margin_bottom = 43.0
+size_flags_horizontal = 6
+text = "Botão 1"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 79.0
+margin_right = 140.0
+margin_bottom = 43.0
+size_flags_horizontal = 6
+text = "Botão 2"
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 154.0
+margin_right = 215.0
+margin_bottom = 43.0
+size_flags_horizontal = 6
+text = "Botão 3"
