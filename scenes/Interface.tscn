@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ButtonBar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://EnergyBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ButtonBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/EnergyBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://interface/counter/label_bg.png" type="Texture" id=3]
 [ext_resource path="res://meu_tema.tres" type="Theme" id=4]
 

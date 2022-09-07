@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Plataformas.tres" type="TileSet" id=2]
+[ext_resource path="res://meu_tema.tres" type="Theme" id=3]
+[ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ScoreControl.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Area2D.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.5, 29.5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 4 )
+
+[node name="Game" type="Node2D"]
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 507, 264 )
+jump_speed = 800
+box2 = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+current = true
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.5
+drag_margin_top = 0.5
+drag_margin_right = 0.5
+drag_margin_bottom = 0.5
+editor_draw_drag_margin = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 970, 551 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.5, -0.5 )
+shape = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -196603, 2, 0, -196590, 2, 0, -196580, 3, 0, 33, 1, 0, 65538, 3, 0, 131085, 4, 0, 262168, 1, 0, 327698, 3, 0, 524294, 2, 0, 655394, 2, 0, 720911, 4, 0, 720917, 3, 0, 917506, 0, 0, 917531, 2, 0 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD" groups=["HUD"]]
+margin_left = 13.0
+margin_top = 10.0
+margin_right = 143.0
+margin_bottom = 47.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
+text = "Score: 0"
+script = ExtResource( 5 )
+
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_Area2D_input_event"]
